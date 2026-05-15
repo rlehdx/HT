@@ -1,8 +1,10 @@
 'use client'
 import { StockBadge } from '@/components/ui/StockBadge'
+import { useCartStore } from '@/store/cart'
 import type { Product } from '@/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 interface ProductCardProps {
   product: Product
@@ -10,6 +12,18 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
+  const addItem = useCartStore(s => s.addItem)
+  const [added, setAdded] = useState(false)
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (product.stock === 0) return
+    addItem(product)
+    setAdded(true)
+    setTimeout(() => setAdded(false), 1200)
+  }
+
   return (
     <Link href={`/products/${product.sku}`} className="block h-full group">
       <div
@@ -58,11 +72,27 @@ export function ProductCard({ product, index }: ProductCardProps) {
                 <span className="text-xs font-medium text-text-sub">Contact for price</span>
               )}
             </p>
-            <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-200">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-              </svg>
-            </div>
+            {/* 카트 추가 버튼 — Link 이벤트를 차단하고 독립 동작 */}
+            <button
+              onClick={handleAddToCart}
+              disabled={product.stock === 0}
+              aria-label="Add to cart"
+              className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed ${
+                added
+                  ? 'bg-emerald-500 text-white scale-110'
+                  : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'
+              }`}
+            >
+              {added ? (
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
