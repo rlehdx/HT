@@ -17,7 +17,7 @@ export function useRealtimeStock(
       .channel('products-stock')
       .on(
         'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'products' },
+        { event: 'UPDATE', schema: 'ht', table: 'products' },
         (payload) => {
           const updated = payload.new as Product
           const cartItem = items.find(i => i.product.id === updated.id)
