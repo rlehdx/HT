@@ -5,8 +5,8 @@ import { MobileNav } from "@/components/ui/MobileNav";
 import { Footer } from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
-  title: "HAETAE — Premium Seafood & Frozen Goods",
-  description: "Premium seafood and frozen goods for discerning B2B and B2C buyers worldwide.",
+  title: "HAETAE — B2B/B2C Ordering Platform",
+  description: "Premium goods for discerning B2B and B2C buyers worldwide.",
 };
 
 export const viewport: Viewport = {

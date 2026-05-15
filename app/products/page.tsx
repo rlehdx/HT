@@ -22,7 +22,7 @@ export default async function ProductsPage() {
           <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-primary">Catalog</p>
           <h1 className="font-display text-3xl font-bold text-text-main md:text-4xl">All Products</h1>
           <p className="mt-1.5 text-sm text-text-sub">
-            Fresh and frozen seafood — browse by category or search below.
+            Browse our full catalog — filter by category or search below.
           </p>
         </div>
       </div>

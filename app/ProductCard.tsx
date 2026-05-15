@@ -73,13 +73,12 @@ export function ProductCard({ product, index }: ProductCardProps) {
 function getCategoryEmoji(category?: string): string {
   if (!category) return '📦'
   const c = category.toLowerCase()
-  if (c.includes('frozen')) return '❄️'
-  if (c.includes('seafood') || c.includes('fish')) return '🐟'
   if (c.includes('meat')) return '🥩'
   if (c.includes('vegeta')) return '🥦'
   if (c.includes('fruit')) return '🍎'
   if (c.includes('grain') || c.includes('rice')) return '🌾'
   if (c.includes('dairy')) return '🧀'
-  if (c.includes('dried')) return '☀️'
+  if (c.includes('drink') || c.includes('beverage')) return '🧃'
+  if (c.includes('snack')) return '🍿'
   return '📦'
 }

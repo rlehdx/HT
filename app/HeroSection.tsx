@@ -8,7 +8,6 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[480px] w-[680px] rounded-full bg-primary/20 blur-[120px]" />
         <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-accent/10 blur-[80px]" />
-        {/* Subtle grid */}
         <div className="absolute inset-0 opacity-[0.04]" style={{
           backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
           backgroundSize: '60px 60px'
@@ -22,13 +21,13 @@ export function HeroSection() {
         </div>
 
         <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl md:text-7xl">
-          Premium Seafood,
+          Refined. Simple.
           <br />
-          <span className="italic text-primary">Delivered Right.</span>
+          <span className="italic text-primary">Beautiful.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/50 md:text-lg">
-          Sourced from the finest waters — frozen fresh for B2B wholesalers and B2C buyers worldwide.
+          Premium goods for discerning buyers — B2B and B2C, one seamless experience.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -49,19 +48,18 @@ export function HeroSection() {
           </Link>
         </div>
 
-        {/* Trust badges */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-white/30">
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            HACCP Certified
+            Quality Guaranteed
           </span>
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            Cold Chain Guaranteed
+            Fast Shipping
           </span>
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">

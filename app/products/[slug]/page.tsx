@@ -40,7 +40,7 @@ export default async function ProductPage({ params }: Props) {
             <Image src={product.image_url} alt={product.name} fill className="object-cover" />
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-text-sub/30">
-              <span className="text-6xl">🐟</span>
+              <span className="text-6xl">📦</span>
               <span className="text-sm font-medium">No Image Available</span>
             </div>
           )}

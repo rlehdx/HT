@@ -11,7 +11,7 @@ export function Footer() {
               HAETAE
             </a>
             <p className="mt-3 text-sm leading-relaxed text-text-sub max-w-xs">
-              Premium seafood &amp; frozen goods for B2B and B2C buyers worldwide.
+              Premium goods for discerning B2B and B2C buyers worldwide.
             </p>
           </div>
 
@@ -20,8 +20,8 @@ export function Footer() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-text-main">Shop</p>
             <ul className="space-y-2 text-sm text-text-sub">
               <li><a href="/products" className="hover:text-primary transition-colors">All Products</a></li>
-              <li><a href="/products?cat=Frozen" className="hover:text-primary transition-colors">Frozen</a></li>
-              <li><a href="/products?cat=Seafood" className="hover:text-primary transition-colors">Seafood</a></li>
+              <li><a href="/products" className="hover:text-primary transition-colors">New Arrivals</a></li>
+              <li><a href="/products" className="hover:text-primary transition-colors">Best Sellers</a></li>
               <li><a href="/checkout" className="hover:text-primary transition-colors">Cart</a></li>
             </ul>
           </div>

@@ -5,11 +5,9 @@ import type { Product } from '@/lib/types'
 
 const CATEGORY_ICONS: Record<string, string> = {
   'All': '🛒',
-  'Frozen': '❄️',
   'Fresh': '🌿',
   'Dried': '☀️',
   'Canned': '🥫',
-  'Seafood': '🐟',
   'Meat': '🥩',
   'Vegetables': '🥦',
   'Fruits': '🍎',
