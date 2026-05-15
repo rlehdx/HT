@@ -8,8 +8,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
           <span className="text-xl font-bold text-primary">HAE Admin</span>
           <nav className="flex items-center gap-6">
-            <a href="/dashboard" className="text-sm text-text-sub hover:text-text-main">Dashboard</a>
-            <a href="/inventory" className="text-sm text-text-sub hover:text-text-main">Inventory</a>
+            <a href="/admin/dashboard" className="text-sm text-text-sub hover:text-text-main">Dashboard</a>
+            <a href="/admin/inventory" className="text-sm text-text-sub hover:text-text-main">Inventory</a>
           </nav>
         </div>
       </header>

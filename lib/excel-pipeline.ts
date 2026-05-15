@@ -29,7 +29,10 @@ export type ValidatedRow = z.infer<typeof ExcelRowSchema>
 
 export function parseExcelBuffer(buffer: ArrayBuffer): ExcelRow[] | { headerError: string } {
   const workbook = XLSX.read(buffer, { type: 'array', cellFormula: false })
-  const sheet = workbook.Sheets[workbook.SheetNames[0]]
+  const sheetName = workbook.SheetNames.includes('Products')
+    ? 'Products'
+    : workbook.SheetNames[0]
+  const sheet = workbook.Sheets[sheetName]
 
   const raw = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
     defval: '',
