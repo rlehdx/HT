@@ -46,7 +46,7 @@ export function parseExcelBuffer(buffer: ArrayBuffer): ExcelRow[] | { headerErro
     return { headerError: `Missing required columns: ${missingHeaders.join(', ')}` }
   }
 
-  return raw as ExcelRow[]
+  return raw as unknown as ExcelRow[]
 }
 
 export function validateRows(rows: ExcelRow[]): ValidationReport {
