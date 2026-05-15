@@ -17,7 +17,6 @@ const CATEGORY_ICONS: Record<string, string> = {
   'Dairy': '🧀',
   'Snacks': '🍿',
   'Beverages': '🧃',
-  'Other': '📦',
 }
 
 function getCategoryIcon(cat: string) {
@@ -28,11 +27,11 @@ function getCategoryIcon(cat: string) {
 }
 
 const SORT_OPTIONS = [
-  { value: 'default', label: '기본 정렬' },
-  { value: 'price_asc', label: '가격 낮은순' },
-  { value: 'price_desc', label: '가격 높은순' },
-  { value: 'name_asc', label: '이름순 (A-Z)' },
-  { value: 'stock_desc', label: '재고 많은순' },
+  { value: 'default', label: 'Default' },
+  { value: 'price_asc', label: 'Price: Low to High' },
+  { value: 'price_desc', label: 'Price: High to Low' },
+  { value: 'name_asc', label: 'Name: A–Z' },
+  { value: 'stock_desc', label: 'Most In Stock' },
 ]
 
 interface CategoryFilterProps {
@@ -84,7 +83,7 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 md:py-10">
-      {/* 검색바 */}
+      {/* Search bar */}
       <div className="mb-6 relative">
         <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none">
           <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,10 +92,10 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
         </div>
         <input
           type="text"
-          placeholder="상품 검색..."
+          placeholder="Search products by name, SKU or category…"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full rounded-xl border border-border bg-white py-3 pl-10 pr-4 text-sm text-text-main placeholder:text-text-sub focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+          className="w-full rounded-xl border border-border bg-white py-3 pl-10 pr-10 text-sm text-text-main placeholder:text-text-sub focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
         />
         {searchQuery && (
           <button
@@ -111,9 +110,9 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-        {/* 카테고리 사이드바 (데스크탑) / 탭 스크롤 (모바일) */}
+        {/* Sidebar (desktop) / Scroll tabs (mobile) */}
         <aside className="lg:w-52 lg:flex-shrink-0">
-          {/* 모바일: 가로 스크롤 탭 */}
+          {/* Mobile: horizontal scroll tabs */}
           <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden scrollbar-hide">
             {categories.map(cat => (
               <button
@@ -134,10 +133,10 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
             ))}
           </div>
 
-          {/* 데스크탑: 세로 사이드바 */}
+          {/* Desktop: vertical sidebar */}
           <div className="hidden lg:block sticky top-24">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-sub">카테고리</p>
-            <ul className="space-y-1">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-text-sub">Categories</p>
+            <ul className="space-y-0.5">
               {categories.map(cat => (
                 <li key={cat}>
                   <button
@@ -145,7 +144,7 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
                     className={`group w-full flex items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-all ${
                       selectedCategory === cat
                         ? 'bg-primary text-white font-semibold'
-                        : 'text-text-sub hover:bg-soft/50 hover:text-text-main'
+                        : 'text-text-sub hover:bg-soft/60 hover:text-text-main'
                     }`}
                   >
                     <span className="flex items-center gap-2">
@@ -164,12 +163,15 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
           </div>
         </aside>
 
-        {/* 상품 목록 */}
+        {/* Product grid */}
         <div className="flex-1 min-w-0">
-          {/* 상단 바: 결과 수 + 정렬 */}
+          {/* Top bar */}
           <div className="mb-4 flex items-center justify-between gap-3">
             <p className="text-sm text-text-sub">
-              <span className="font-semibold text-text-main">{filtered.length}</span>개 상품
+              <span className="font-semibold text-text-main">{filtered.length}</span> products
+              {selectedCategory !== 'All' && (
+                <span> in <span className="font-medium text-primary">{selectedCategory}</span></span>
+              )}
             </p>
             <select
               value={sortBy}
@@ -185,13 +187,13 @@ export function CategoryFilter({ products }: CategoryFilterProps) {
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-white py-16 text-center">
               <p className="text-4xl mb-3">🔍</p>
-              <p className="font-semibold text-text-main">상품을 찾을 수 없습니다</p>
-              <p className="mt-1 text-sm text-text-sub">다른 카테고리나 검색어를 시도해보세요</p>
+              <p className="font-semibold text-text-main">No products found</p>
+              <p className="mt-1 text-sm text-text-sub">Try a different category or search term.</p>
               <button
                 onClick={() => { setSelectedCategory('All'); setSearchQuery('') }}
                 className="mt-4 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-accent transition-colors"
               >
-                전체 보기
+                Show all products
               </button>
             </div>
           ) : (

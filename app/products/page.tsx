@@ -3,7 +3,7 @@ import { CategoryFilter } from '@/components/ui/CategoryFilter'
 import type { Product } from '@/lib/types'
 
 export const metadata = {
-  title: 'Products — HAE',
+  title: 'Products — HAETAE',
 }
 
 export default async function ProductsPage() {
@@ -17,10 +17,13 @@ export default async function ProductsPage() {
 
   return (
     <div>
-      <div className="bg-gradient-to-b from-soft/30 to-surface border-b border-border px-4 py-6 md:py-8">
+      <div className="border-b border-border bg-white px-4 py-7 md:py-9">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-2xl font-bold text-text-main md:text-3xl">전체 상품</h1>
-          <p className="mt-1 text-sm text-text-sub">신선한 해산물 및 냉동식품을 카테고리별로 찾아보세요</p>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-primary">Catalog</p>
+          <h1 className="font-display text-3xl font-bold text-text-main md:text-4xl">All Products</h1>
+          <p className="mt-1.5 text-sm text-text-sub">
+            Fresh and frozen seafood — browse by category or search below.
+          </p>
         </div>
       </div>
       <CategoryFilter products={items} />
