@@ -2,7 +2,7 @@ import { auth } from '@clerk/nextjs/server'
 import { CheckoutForm } from './CheckoutForm'
 
 export default async function CheckoutPage() {
-  const { userId } = await auth()
+  const { userId } = auth()
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10 md:py-16">
