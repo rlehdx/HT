@@ -3,13 +3,14 @@ import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#0f0a14] px-4 py-20 text-center md:py-28">
+    <section className="relative overflow-hidden bg-[#0f0a14] px-4 text-center min-h-[580px] flex flex-col justify-center py-16">
       {/* Hero SVG 배경 */}
       <div className="pointer-events-none absolute inset-0">
         <img
           src="/Hero.svg"
           alt=""
-          className="h-full w-full object-cover object-center opacity-60"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[70%] opacity-35"
+          style={{ maxWidth: '700px' }}
         />
         {/* 텍스트 가독성을 위한 오버레이 */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f0a14]/60 via-[#0f0a14]/40 to-[#0f0a14]/80" />
