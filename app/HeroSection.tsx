@@ -4,14 +4,15 @@ import Link from 'next/link'
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#0f0a14] px-4 py-20 text-center md:py-28">
-      {/* Background texture */}
+      {/* Hero SVG 배경 */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[480px] w-[680px] rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-accent/10 blur-[80px]" />
-        <div className="absolute inset-0 opacity-[0.04]" style={{
-          backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
+        <img
+          src="/Hero.svg"
+          alt=""
+          className="h-full w-full object-cover object-center opacity-60"
+        />
+        {/* 텍스트 가독성을 위한 오버레이 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f0a14]/60 via-[#0f0a14]/40 to-[#0f0a14]/80" />
       </div>
 
       <div className="relative mx-auto max-w-3xl">
