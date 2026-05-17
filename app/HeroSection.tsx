@@ -17,10 +17,6 @@ export function HeroSection() {
       </div>
 
       <div className="relative mx-auto max-w-3xl">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-medium tracking-widest text-white/60 uppercase">B2B &amp; B2C Platform</span>
-        </div>
 
         <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl md:text-7xl">
           Refined. Simple.
