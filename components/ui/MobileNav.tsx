@@ -44,37 +44,82 @@ export function MobileNav() {
       </button>
 
       {open && (
-        <div className="absolute inset-x-0 top-[57px] z-50 border-b border-border bg-white/97 backdrop-blur-md shadow-lg">
+        <div className="absolute inset-x-0 top-full z-50 border-b border-border bg-white/97 backdrop-blur-md shadow-lg">
           <nav className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
-            <a
-              href="/products"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
-            >
-              <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-              </svg>
-              Products
-            </a>
-            <a
-              href="/checkout"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
-            >
-              <span className="flex items-center gap-3">
+            {/* 탭 메뉴 */}
+            <div className="mb-1">
+              <p className="px-4 pb-1.5 text-[10px] font-semibold uppercase tracking-widest text-text-sub">Menu</p>
+              <a
+                href="/order-guide"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
+              >
                 <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
-                Cart
-              </span>
-              {count > 0 && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
-                  {count}
+                Order Guide
+              </a>
+              <a
+                href="/products"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
+              >
+                <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                </svg>
+                All Items
+              </a>
+              <a
+                href="/products?tab=new"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
+              >
+                <span className="flex items-center gap-3">
+                  <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  New Items
                 </span>
-              )}
-            </a>
+                <span className="rounded-full bg-soft px-2 py-0.5 text-[10px] font-bold text-primary">NEW</span>
+              </a>
+              <a
+                href="/products?tab=half"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-primary hover:bg-soft/50 transition-colors"
+              >
+                <span className="flex items-center gap-3">
+                  <svg className="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M17 17h.01M7 7L17 17M7 17L17 7" />
+                  </svg>
+                  1/2 Price
+                </span>
+                <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-white">50%</span>
+              </a>
+            </div>
 
-            <div className="border-t border-border mt-1 pt-1">
+            {/* 카트 */}
+            <div className="border-t border-border pt-1">
+              <a
+                href="/checkout"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-text-main hover:bg-soft/50 transition-colors"
+              >
+                <span className="flex items-center gap-3">
+                  <svg className="w-4 h-4 text-text-sub" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Cart
+                </span>
+                {count > 0 && (
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                    {count}
+                  </span>
+                )}
+              </a>
+            </div>
+
+            {/* 인증 */}
+            <div className="border-t border-border pt-1">
               {isLoaded && isSignedIn ? (
                 <>
                   <div className="px-4 py-2 text-xs text-text-sub">

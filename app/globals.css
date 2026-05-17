@@ -52,3 +52,17 @@ body {
 .animate-fade-up {
   animation: fadeUp 0.45s ease both;
 }
+
+/* 탭 하단 바 공간 확보 (모바일) */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* 포커스 링 개선 */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}

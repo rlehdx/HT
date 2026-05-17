@@ -34,9 +34,10 @@ const SORT_OPTIONS = [
 
 interface CategoryFilterProps {
   products: Product[]
+  activeTab?: string | null
 }
 
-export function CategoryFilter({ products }: CategoryFilterProps) {
+export function CategoryFilter({ products, activeTab }: CategoryFilterProps) {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [sortBy, setSortBy] = useState('default')
   const [searchQuery, setSearchQuery] = useState('')
