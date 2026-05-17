@@ -47,26 +47,6 @@ export function HeroSection() {
           </Link>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs text-white/30">
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            Quality Guaranteed
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            Fast Shipping
-          </span>
-          <span className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            Wholesale Available
-          </span>
-        </div>
       </div>
     </section>
   )
