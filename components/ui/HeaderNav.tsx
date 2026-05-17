@@ -8,13 +8,6 @@ export function HeaderNav() {
 
   return (
     <nav className="hidden md:flex items-center gap-2">
-      <Link
-        href="/products"
-        className="rounded-lg px-3 py-2 text-sm font-medium text-text-sub hover:bg-soft/60 hover:text-text-main transition-all"
-      >
-        Products
-      </Link>
-
       {/* Clerk 로딩 전에도 버튼 보임 */}
       {!isLoaded || !isSignedIn ? (
         <SignInButton mode="modal">
