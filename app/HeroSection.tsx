@@ -28,9 +28,6 @@ export function HeroSection() {
           <span className="italic text-primary">Beautiful.</span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/50 md:text-lg">
-          Premium goods for discerning buyers — B2B and B2C, one seamless experience.
-        </p>
 
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link
