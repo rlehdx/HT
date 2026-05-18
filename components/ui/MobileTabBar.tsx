@@ -31,7 +31,7 @@ const TABS = [
     ),
   },
   {
-    label: '1/2 Price',
+    label: 'Sale',
     href: '/products?tab=half',
     highlight: true,
     icon: (

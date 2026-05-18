@@ -17,7 +17,7 @@ const TABS = [
     badge: 'NEW',
   },
   {
-    label: '1/2 Price',
+    label: 'Sale',
     href: '/products?tab=half',
     badge: '50%',
     highlight: true,

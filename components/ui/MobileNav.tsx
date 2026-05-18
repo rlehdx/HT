@@ -91,7 +91,7 @@ export function MobileNav() {
                   <svg className="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M17 17h.01M7 7L17 17M7 17L17 7" />
                   </svg>
-                  1/2 Price
+                  Sale
                 </span>
                 <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-bold text-white">50%</span>
               </a>
