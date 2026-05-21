@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="font-display text-2xl font-bold tracking-tight text-primary">
-              HAETAE
+              Haitai
             </a>
             <p className="mt-3 text-sm leading-relaxed text-text-sub max-w-xs">
               Premium goods for discerning B2B and B2C buyers worldwide.
@@ -60,7 +60,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-text-sub">© {year} HAETAE. All rights reserved.</p>
+          <p className="text-xs text-text-sub">© {year} Haitai. All rights reserved.</p>
           <div className="flex gap-4 text-xs text-text-sub">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>

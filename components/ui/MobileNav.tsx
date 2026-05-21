@@ -44,7 +44,7 @@ export function MobileNav() {
       </button>
 
       {open && (
-        <div className="absolute inset-x-0 top-full z-50 border-b border-border bg-white/97 backdrop-blur-md shadow-lg">
+        <div className="absolute inset-x-0 top-full z-50 border-b border-border bg-white shadow-lg">
           <nav className="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-1">
             {/* 탭 메뉴 */}
             <div className="mb-1">

@@ -9,7 +9,7 @@ import { MobileTabBar } from "@/components/ui/MobileTabBar";
 import { Footer } from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
-  title: "HAETAE — B2B/B2C Ordering Platform",
+  title: "Haitai — B2B/B2C Ordering Platform",
   description: "Premium goods for discerning B2B and B2C buyers worldwide.",
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-0 h-16">
               {/* 로고 */}
               <a href="/" className="font-display text-2xl font-bold tracking-tight text-primary flex-shrink-0">
-                HAETAE
+                Haitai
               </a>
               {/* 탭 네비게이션 — 로고 바로 옆 */}
               <TabNav />

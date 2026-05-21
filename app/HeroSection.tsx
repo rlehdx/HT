@@ -27,7 +27,7 @@ export function HeroSection({ className }: HeroSectionProps) {
       </div>
 
       {/* Text content */}
-      <div className="relative z-10 flex flex-col justify-center flex-1 px-8 md:px-16 py-20">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center flex-1 px-8 md:px-16 py-20">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#E8001A]">
           Since 1945 · Korea's #1 Snack Brand
         </p>
@@ -45,7 +45,7 @@ export function HeroSection({ className }: HeroSectionProps) {
           From crispy rice crackers to beloved cookies — authentic Haitai snacks delivered to your door.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/products"
             className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 active:translate-y-0"

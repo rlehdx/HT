@@ -37,6 +37,20 @@ interface CategoryFilterProps {
   activeTab?: string | null
 }
 
+const CHOSUNG_LIST = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']
+
+function getChosung(str: string): string {
+  return [...str].map(ch => {
+    const code = ch.charCodeAt(0) - 0xAC00
+    if (code < 0 || code > 11171) return ch
+    return CHOSUNG_LIST[Math.floor(code / 28 / 21)]
+  }).join('')
+}
+
+function isChosungOnly(str: string): boolean {
+  return /^[ㄱ-ㅎ]+$/.test(str)
+}
+
 export function CategoryFilter({ products, activeTab }: CategoryFilterProps) {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [sortBy, setSortBy] = useState('default')
@@ -55,12 +69,21 @@ export function CategoryFilter({ products, activeTab }: CategoryFilterProps) {
     }
 
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase()
-      list = list.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.category?.toLowerCase().includes(q) ||
-        p.sku.toLowerCase().includes(q)
-      )
+      const q = searchQuery.trim()
+      const qLower = q.toLowerCase()
+      const chosung = isChosungOnly(q)
+      list = list.filter(p => {
+        if (chosung) {
+          return getChosung(p.name).includes(q) ||
+            getChosung(p.category ?? '').includes(q) ||
+            getChosung(p.sku).includes(q)
+        }
+        return (
+          p.name.toLowerCase().includes(qLower) ||
+          p.category?.toLowerCase().includes(qLower) ||
+          p.sku.toLowerCase().includes(qLower)
+        )
+      })
     }
 
     switch (sortBy) {

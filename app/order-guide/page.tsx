@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Order Guide — HAETAE',
+  title: 'Order Guide — Haitai',
 }
 
 const STEPS = [
@@ -76,7 +76,7 @@ export default function OrderGuidePage() {
         <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">Getting Started</p>
         <h1 className="font-display text-4xl font-bold text-text-main md:text-5xl">Order Guide</h1>
         <p className="mt-4 text-base text-text-sub max-w-lg mx-auto leading-relaxed">
-          Everything you need to know about ordering from HAETAE — from browsing to checkout.
+          Everything you need to know about ordering from Haitai — from browsing to checkout.
         </p>
       </div>
 
