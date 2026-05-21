@@ -56,11 +56,11 @@ export function parseExcelBuffer(buffer: ArrayBuffer): ParsedSheet | { headerErr
     }
   }
 
-  const raw = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
+  const raw = XLSX.utils.sheet_to_json<unknown[]>(sheet, {
     defval: '',
     raw: false,
     header: 1,
-  }) as unknown[][]
+  })
 
   // 헤더 행 이후부터 데이터 파싱
   const headers = raw[headerRow] as string[]
