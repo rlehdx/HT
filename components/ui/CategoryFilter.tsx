@@ -134,21 +134,25 @@ export function CategoryFilter({ products, activeTab }: CategoryFilterProps) {
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
         {/* Sidebar (desktop) / Scroll tabs (mobile) */}
         <aside className="lg:w-52 lg:flex-shrink-0">
-          {/* Mobile: horizontal scroll tabs */}
-          <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden scrollbar-hide">
+          {/* Mobile: 2열 그리드 */}
+          <div className="grid grid-cols-2 gap-2 lg:hidden">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`flex-shrink-0 flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-medium transition-all ${
+                className={`flex items-center justify-between gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${
                   selectedCategory === cat
                     ? 'bg-primary text-white shadow-sm'
                     : 'bg-white border border-border text-text-sub hover:border-primary hover:text-primary'
                 }`}
               >
-                <span>{getCategoryIcon(cat)}</span>
-                <span>{cat}</span>
-                <span className={`text-xs ${selectedCategory === cat ? 'text-white/70' : 'text-text-sub'}`}>
+                <span className="flex items-center gap-1.5 truncate">
+                  <span>{getCategoryIcon(cat)}</span>
+                  <span className="truncate">{cat}</span>
+                </span>
+                <span className={`flex-shrink-0 text-xs rounded-full px-1.5 py-0.5 ${
+                  selectedCategory === cat ? 'bg-white/20 text-white' : 'bg-soft text-text-sub'
+                }`}>
                   {categoryCounts[cat] ?? 0}
                 </span>
               </button>
