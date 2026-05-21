@@ -62,9 +62,14 @@ export function InventoryUploader() {
   return (
     <div className="space-y-6">
       <GlassCard>
-        <h2 className="mb-4 text-lg font-semibold text-text-main">Upload Excel File</h2>
-        <p className="mb-4 text-sm text-text-sub">
-          Required columns: SKU, ProductName, Category, Price, Stock, Unit, Description, ImageURL
+        <h2 className="mb-1 text-lg font-semibold text-text-main">재고 업로드</h2>
+        <p className="mb-1 text-sm text-text-sub">
+          HAITAI 일자별재고 Excel 파일을 업로드하세요.
+        </p>
+        <p className="mb-4 text-xs text-text-sub/70">
+          파일명 예시: <span className="font-mono">HAITAI 일자별재고 2026.05월.xlsx</span><br />
+          필수 컬럼: <span className="font-mono">SAP Code · Item Name · Type · Stock</span><br />
+          가장 마지막 시트(최신 날짜)가 자동으로 사용됩니다.
         </p>
         <input
           ref={fileRef}

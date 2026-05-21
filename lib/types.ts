@@ -60,15 +60,17 @@ export interface Profile {
   created_at: string
 }
 
+// HAITAI 일자별재고 원본 행
 export interface ExcelRow {
-  SKU: string
-  ProductName: string
-  Category: string
-  Price: string | number
-  Stock: string | number
-  Unit: string
-  Description: string
-  ImageURL: string
+  'SAP Code': string
+  'Item Name': string
+  'Type': string
+  'Stock': string | number
+  'UPC'?: string | number
+  'Expire Date'?: string | number
+  'Hold'?: string | number
+  '재고상태'?: string
+  'Box#'?: string | number
 }
 
 export interface RowError {
@@ -78,6 +80,6 @@ export interface RowError {
 }
 
 export interface ValidationReport {
-  valid: ExcelRow[]
+  valid: import('@/lib/excel-pipeline').ValidatedRow[]
   errors: RowError[]
 }
