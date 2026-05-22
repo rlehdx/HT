@@ -46,7 +46,7 @@ export default async function ProductsPage({
 
   return (
     <div>
-      <div className="sticky top-16 z-30 border-t-2 border-b-2 border-primary bg-white px-4 py-7 md:py-9">
+      <div className="border-b border-border bg-white px-4 py-7 md:py-9">
         <div className="mx-auto max-w-7xl flex items-start justify-between gap-4">
           <div>
             <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-primary">

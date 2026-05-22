@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <ClerkProvider>
       <html lang="en">
         <body className="min-h-screen bg-surface flex flex-col">
-          <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-md shadow-sm">
+          <header className="sticky top-0 z-40 border-b-2 border-primary bg-white/95 backdrop-blur-md shadow-sm">
             <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-0 h-16">
               {/* 로고 */}
               <a href="/" className="font-display text-2xl font-bold tracking-tight text-primary flex-shrink-0">
