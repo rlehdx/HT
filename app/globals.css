@@ -66,3 +66,8 @@ body {
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+/* w-8 override */
+.w-8 {
+  width: 20rem;
+}
