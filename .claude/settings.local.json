@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "PowerShell(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "PowerShell(New-Item *)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"components\\\\ui\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"hooks\")",
+      "Bash(Write-Output \"Directories created\")",
+      "Bash(git init *)",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)",
+      "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(npm run *)",
+      "Bash(cp -r \"app/\\(store\\)/checkout\" \"app/checkout\")",
+      "Bash(cp -r \"app/\\(store\\)/products\" \"app/products\")",
+      "Read(//c/Users/rlehd/Downloads/**)",
+      "Bash(python -c ' *)",
+      "Bash(python kgl_order_processor.py)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(list\\(d.get\\('dependencies',{}\\).keys\\(\\)\\)\\)\")",
+      "Bash(node_modules\\\\.bin\\\\tsc --noEmit)"
+    ]
+  }
+}
