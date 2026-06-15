@@ -123,9 +123,9 @@ export function processOrderFiles(files: { name: string; buffer: ArrayBuffer }[]
   for (const code of sortOrder) {
     if (orderQty.has(code)) sortedQty.set(code, orderQty.get(code)!)
   }
-  for (const [code, qty] of orderQty) {
+  orderQty.forEach((qty, code) => {
     if (!sortedQty.has(code)) sortedQty.set(code, qty)
-  }
+  })
 
   // KGL 파일 수정
   const kglBuf = classified.get('kgl_format')!
