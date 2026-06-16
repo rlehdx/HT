@@ -6,10 +6,19 @@ import { PinkButton } from '@/components/ui/PinkButton'
 type Status = 'idle' | 'loading' | 'done' | 'error'
 
 const FILE_LABELS = [
-  { key: 'sungwoo_to_ht', label: 'SungwooToHT', hint: '오더 수량 원천 파일 (No. / Quantity 컬럼)' },
-  { key: 'from_sungwoo',  label: 'FromSungwoo',  hint: '정렬 기준 템플릿 (Item No. 컬럼)' },
-  { key: 'kgl_format',    label: 'KGL 출고 오더 포맷', hint: '최종 출력 파일 (SAP Code / 입출고수량 컬럼)' },
+  { key: 'sungwoo_to_ht', label: 'SungwooToHT', hint: '오더 수량 원천 파일 (No. / Quantity 컬럼)', downloadable: false },
+  { key: 'from_sungwoo',  label: 'FromSungwoo',  hint: '정렬 기준 템플릿 (Item No. 컬럼)', downloadable: true },
+  { key: 'kgl_format',    label: 'KGL 출고 오더 포맷', hint: '최종 출력 파일 (SAP Code / 입출고수량 컬럼)', downloadable: true },
 ]
+
+function downloadFile(file: File) {
+  const url = URL.createObjectURL(file)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = file.name
+  a.click()
+  URL.revokeObjectURL(url)
+}
 
 export function KglOrderExporter() {
   const refs = [
@@ -17,8 +26,23 @@ export function KglOrderExporter() {
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
   ]
+  const [fileNames, setFileNames] = useState<(string | null)[]>([null, null, null])
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
+
+  const handleFileChange = (i: number) => {
+    const file = refs[i].current?.files?.[0]
+    setFileNames(prev => {
+      const next = [...prev]
+      next[i] = file?.name ?? null
+      return next
+    })
+  }
+
+  const handleDownloadUploaded = (i: number) => {
+    const file = refs[i].current?.files?.[0]
+    if (file) downloadFile(file)
+  }
 
   const handleExport = async () => {
     const files = refs.map(r => r.current?.files?.[0])
@@ -67,12 +91,24 @@ export function KglOrderExporter() {
               {i + 1}. {item.label}
             </p>
             <p className="mb-1 text-xs text-text-sub/70">{item.hint}</p>
-            <input
-              ref={refs[i]}
-              type="file"
-              accept=".xlsx,.xls"
-              className="block w-full text-sm text-text-sub file:mr-4 file:min-h-[44px] file:rounded-xl file:border-0 file:bg-soft file:px-4 file:py-2 file:text-sm file:font-medium file:text-text-main hover:file:bg-accent/20"
-            />
+            <div className="flex items-center gap-3">
+              <input
+                ref={refs[i]}
+                type="file"
+                accept=".xlsx,.xls"
+                onChange={() => handleFileChange(i)}
+                className="block flex-1 text-sm text-text-sub file:mr-4 file:min-h-[44px] file:rounded-xl file:border-0 file:bg-soft file:px-4 file:py-2 file:text-sm file:font-medium file:text-text-main hover:file:bg-accent/20"
+              />
+              {item.downloadable && fileNames[i] && (
+                <button
+                  type="button"
+                  onClick={() => handleDownloadUploaded(i)}
+                  className="shrink-0 rounded-xl border border-border px-3 py-2 text-xs font-medium text-text-sub hover:border-primary hover:text-primary transition-all"
+                >
+                  ↓ 다운로드
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>
