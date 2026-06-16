@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { processOrderFiles } from '@/lib/kgl-order-pipeline'
 
+function toBase64(buf: ArrayBuffer): string {
+  return Buffer.from(buf).toString('base64')
+}
+
 export async function POST(req: NextRequest) {
   const formData = await req.formData()
   const entries = formData.getAll('files') as File[]
@@ -13,14 +17,11 @@ export async function POST(req: NextRequest) {
     const files = await Promise.all(
       entries.map(async (f) => ({ name: f.name, buffer: await f.arrayBuffer() }))
     )
-    const result = processOrderFiles(files)
+    const { kglBuffer, orderListBuffer } = processOrderFiles(files)
 
-    return new NextResponse(result, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        'Content-Disposition': 'attachment; filename="KGL_%EC%B6%9C%EA%B3%A0%EC%98%A4%EB%8D%94_%EC%99%84%EC%84%B1.xlsx"',
-      },
+    return NextResponse.json({
+      kgl: toBase64(kglBuffer),
+      orderList: toBase64(orderListBuffer),
     })
   } catch (err) {
     const message = err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.'

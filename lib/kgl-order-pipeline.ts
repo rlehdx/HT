@@ -103,7 +103,48 @@ function loadSortOrder(buf: ArrayBuffer): string[] {
 
 // ─── Step 4~5: KGL 포맷에 수량 기록 ─────────────────────────────────────────
 
-export function processOrderFiles(files: { name: string; buffer: ArrayBuffer }[]): ArrayBuffer {
+export interface ProcessResult {
+  kglBuffer: ArrayBuffer       // 3번: 수량 매핑 완성된 KGL 파일
+  orderListBuffer: ArrayBuffer // 2번: FromSungwoo 순서로 정렬된 오더 수량 리스트
+}
+
+// ─── 2번 결과물: 정렬된 오더 리스트 엑셀 생성 ───────────────────────────────
+
+function buildOrderListBuffer(
+  sortedQty: Map<string, number>,
+  fromSungwooBuf: ArrayBuffer
+): ArrayBuffer {
+  // FromSungwoo 원본에서 Item No. · Description 등 메타 컬럼 가져오기
+  const wb = XLSX.read(fromSungwooBuf, { type: 'array' })
+  const sheet = wb.Sheets[wb.SheetNames[0]]
+  const hr = findHeaderRow(sheet, SIGNATURES.from_sungwoo)
+  const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
+    defval: '',
+    raw: true,
+    range: hr,
+  })
+
+  // sortedQty 에 있는 항목만, 순서 유지하며 추출
+  const output: Record<string, unknown>[] = []
+  for (const row of rows) {
+    const code = normalizeCode(row['Item No.'])
+    if (sortedQty.has(code)) {
+      output.push({
+        'Item No.':    row['Item No.'],
+        'Description': row['Description'] ?? row['Description 2'] ?? '',
+        'Product Size': row['Product Size'] ?? '',
+        'Order Qty':   sortedQty.get(code),
+      })
+    }
+  }
+
+  const newWb = XLSX.utils.book_new()
+  const newSheet = XLSX.utils.json_to_sheet(output)
+  XLSX.utils.book_append_sheet(newWb, newSheet, 'Order List')
+  return XLSX.write(newWb, { type: 'array', bookType: 'xlsx' }) as ArrayBuffer
+}
+
+export function processOrderFiles(files: { name: string; buffer: ArrayBuffer }[]): ProcessResult {
   // 자동 분류
   const classified = new Map<FileType, ArrayBuffer>()
   for (const f of files) {
@@ -162,5 +203,8 @@ export function processOrderFiles(files: { name: string; buffer: ArrayBuffer }[]
     }
   }
 
-  return XLSX.write(wb, { type: 'array', bookType: 'xlsx' }) as ArrayBuffer
+  const kglBuffer = XLSX.write(wb, { type: 'array', bookType: 'xlsx' }) as ArrayBuffer
+  const orderListBuffer = buildOrderListBuffer(sortedQty, classified.get('from_sungwoo')!)
+
+  return { kglBuffer, orderListBuffer }
 }
