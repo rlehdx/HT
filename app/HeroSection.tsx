@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { CatalogViewer } from '@/components/ui/CatalogViewer'
 
 interface HeroSectionProps {
   className?: string
@@ -65,13 +64,6 @@ export function HeroSection({ className }: HeroSectionProps) {
             New Arrivals
           </Link>
         </div>
-
-        {/* Catalog viewer */}
-        <CatalogViewer
-          pdfUrl="/haitai-catalog-2026.pdf"
-          totalPages={150}
-          title="Haitai Product Catalog 2026"
-        />
 
         {/* Trust badges */}
         <div className="mt-10 flex flex-wrap gap-6 text-xs text-gray-400 font-medium">
