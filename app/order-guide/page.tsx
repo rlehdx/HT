@@ -1,5 +1,7 @@
+import { CatalogViewer } from '@/components/ui/CatalogViewer'
+
 export const metadata = {
-  title: 'Order Guide — HaiTai',
+  title: 'Order Guide — HAITAI',
 }
 
 const STEPS = [
@@ -70,13 +72,21 @@ const FAQS = [
 
 export default function OrderGuidePage() {
   return (
+    <div>
+      {/* Full catalog viewer */}
+      <CatalogViewer
+        pdfUrl="/haitai-catalog-2026.pdf"
+        totalPages={150}
+        title="HAITAI Product Catalog 2026"
+      />
+
     <div className="mx-auto max-w-4xl px-4 py-12 md:py-16">
       {/* Hero */}
       <div className="mb-12 text-center">
         <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">Getting Started</p>
         <h1 className="font-display text-4xl font-bold text-text-main md:text-5xl">Order Guide</h1>
         <p className="mt-4 text-base text-text-sub max-w-lg mx-auto leading-relaxed">
-          Everything you need to know about ordering from HaiTai — from browsing to checkout.
+          Everything you need to know about ordering from HAITAI — from browsing to checkout.
         </p>
       </div>
 
@@ -158,6 +168,7 @@ export default function OrderGuidePage() {
           </a>
         </div>
       </div>
+    </div>
     </div>
   )
 }

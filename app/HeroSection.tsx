@@ -42,7 +42,7 @@ export function HeroSection({ className }: HeroSectionProps) {
         </h1>
 
         <p className="mt-5 text-base text-gray-500 max-w-md">
-          From crispy rice crackers to beloved cookies — authentic Haitai snacks delivered to your door.
+          From crispy rice crackers to beloved cookies — authentic HAITAI snacks delivered to your door.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">

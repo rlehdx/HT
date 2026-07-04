@@ -3,7 +3,7 @@ import { CategoryFilter } from '@/components/ui/CategoryFilter'
 import type { Product } from '@/lib/types'
 
 export const metadata = {
-  title: 'Products — HaiTai',
+  title: 'Products — HAITAI',
 }
 
 const TAB_META: Record<string, { label: string; desc: string; badge?: string }> = {

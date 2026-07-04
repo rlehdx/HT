@@ -11,7 +11,7 @@ interface CatalogViewerProps {
 export function CatalogViewer({
   pdfUrl,
   totalPages,
-  title = 'Haitai Catalog 2026',
+  title = 'HAITAI Catalog 2026',
 }: CatalogViewerProps) {
   const [currentPage, setCurrentPage] = useState(1)
   const [isFlipping, setIsFlipping] = useState(false)

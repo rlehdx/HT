@@ -6,7 +6,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-40 border-b border-border bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <a href="/" className="font-display text-xl font-bold tracking-tight text-primary">HaiTai</a>
+            <a href="/" className="font-display text-xl font-bold tracking-tight text-primary">HAITAI</a>
             <span className="rounded-md bg-soft px-2 py-0.5 text-xs font-semibold text-primary">Admin</span>
           </div>
           <nav className="flex items-center gap-1">

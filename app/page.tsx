@@ -4,7 +4,6 @@ import { StockBadge } from '@/components/ui/StockBadge'
 import { BentoGrid, BentoCell } from '@/components/ui/BentoGrid'
 import { HeroSection } from './HeroSection'
 import { ProductCard } from './ProductCard'
-import { CatalogViewer } from '@/components/ui/CatalogViewer'
 import type { Product } from '@/lib/types'
 
 export default async function HomePage() {
@@ -20,12 +19,6 @@ export default async function HomePage() {
   return (
     <div>
       <HeroSection />
-
-      <CatalogViewer
-        pdfUrl="/haitai-catalog-2026.pdf"
-        totalPages={150}
-        title="Haitai Product Catalog 2026"
-      />
 
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="mb-8 text-2xl font-semibold text-text-main">Featured Products</h2>
